@@ -15,6 +15,7 @@ class Node
 
 class List
 {
+  public:
   Node* head;
   Node* tail;
   
@@ -31,14 +32,51 @@ class List
       head=tail=newNode;
       return;
     }
-    tail->next=newNode;
-    
+    else{
+      tail->next=newNode;
+      tail= newNode;
+      return ;
+    }
+  }
+  void print()
+  {
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+      cout<<temp->data<<",";
+      temp=temp->next;
+    }
+  }
+  void reverse()
+  {
+    Node* current =head;
+    Node* next=NULL;
+    Node* pre=NULL;
+    while(current!=NULL)
+    {
+      next=current->next;
+      current->next=pre;
+      pre=current;
+      current= next; 
+    }
+    head=pre;
   }
 
 };
 
 int main()
 {
+  List ll;
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+  ll.push_back(4);
+  ll.push_back(5);
+
+  // ll.print();
+  ll.reverse();
+  ll.print();
+
 
 
 return 0;
